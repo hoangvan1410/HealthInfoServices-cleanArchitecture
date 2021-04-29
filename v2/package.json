@@ -1,0 +1,29 @@
+{
+  "name": "health-services",
+  "version": "1.0.0",
+  "description": "health services, microservices, ddd-clean architecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vanhoang",
+  "license": "ISC",
+  "dependencies": {
+    "awilix": "^4.3.3",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.25.0",
+    "fastify": "^3.15.0",
+    "fastify-static": "^4.0.1",
+    "lodash": "^4.17.21",
+    "lodash-fp": "^0.10.4",
+    "make-promises-safe": "^5.1.0",
+    "mocha": "^8.3.2",
+    "mongoose": "^5.12.6",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "pino": "^6.11.3",
+    "pino-pretty": "^4.7.1"
+  }
+}

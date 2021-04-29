@@ -8,7 +8,7 @@ module.exports = class InMemoryHealthInfoRepository extends HealthInfoRepository
 
     async add(healthInfoInstance){
        const {height, weight, age, gender, medic_his} = healthInfoEntity;
-       const mongooseHealthInfo = new 
+       const mongooseHealthInfo 
         return healthInfoInstance;
     }
 

@@ -28,7 +28,7 @@ module.exports = (dependencies)=>{
             res.json(healthInfos);
         },(err)=>{
             next(err);
-        });
+        }).catch(next);
     };
 
     const getHealthInfo = (req,res,next) =>{

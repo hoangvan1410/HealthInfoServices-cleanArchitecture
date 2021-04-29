@@ -3,16 +3,13 @@ const InMemoryHealthInfoRepository = require('./InMemoryHealthInfoRepository');
 const HealthInfo = require('../../../entities/HealthInfo');
 const mongoose = require("mongoose");
 
-module.exports = class InMemoryDatabaseServices extends DatabaseService {
+module.exports = class MongoDBDatabaseServices extends DatabaseService {
     constructor() {
         super();
         this.healthInfoRepository = new InMemoryHealthInfoRepository();
     }
 
-    async initDatabase() {
-        //Assign MongoDB connection string to Uri and declare options settings
-        var uri = "mongodb+srv://admin:1234@cluster0.uum52.mongodb.net/healthInfo?retryWrites=true&w=majority"
-
+    async initDatabase(uri) {
         // Declare a variable named option and assign optional settings
         const options = {
             useNewUrlParser: true,
@@ -29,10 +26,5 @@ module.exports = class InMemoryDatabaseServices extends DatabaseService {
                 }
             });
     }
-
-    async seedData() {
-        let sampleHealthInfo = new HealthInfo('a', 'b', 'c', 'd', 'e');
-        sampleHealthInfo = await this.healthInfoRepository.add(sampleHealthInfo);
-
-    }
+    
 };
