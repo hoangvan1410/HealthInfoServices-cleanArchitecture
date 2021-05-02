@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = ({ HealthRepository }) => id => HealthRepository.remove(id)
+module.exports = (healthInfoID,{ HealthRepository }) =>{
+    return HealthRepository.remove(healthInfoID);
+}
