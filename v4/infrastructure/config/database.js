@@ -22,10 +22,11 @@ const mongoDB = container => {
 }
 
 const resolveDB = container => {
-  if (process.env.NODE_ENV === 'test') process.env.DB_DRIVER = 'in-memory'
+  //if (process.env.NODE_ENV === 'test') process.env.DB_DRIVER = 'in-memory'
 
-  if (process.env.DB_DRIVER === 'in-memory') inMemoryDB(container)
-  else if (process.env.DB_DRIVER === 'mongo') mongoDB(container)
+  //if (process.env.DB_DRIVER === 'in-memory') inMemoryDB(container)
+  //else if (process.env.DB_DRIVER === 'mongo') 
+  mongoDB(container)
 }
 
 module.exports = resolveDB
