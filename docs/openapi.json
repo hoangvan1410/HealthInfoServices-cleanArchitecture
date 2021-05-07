@@ -208,7 +208,7 @@
             "type": "string"
           },
           "medic_his": {
-            "type": "number"
+            "type": "string"
           }
         }
       }
