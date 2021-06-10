@@ -1,12 +1,12 @@
 const { asFunction } = require('awilix')
 
-const inMemoryDB = container => {
-  const HealthInfoRepositoryInMemory = require('../repositories/HealthInfoRepositoryInMemory')
+// const inMemoryDB = container => {
+//   const HealthInfoRepositoryInMemory = require('../repositories/HealthInfoRepositoryInMemory')
 
-  container.register({
-    HealthInfoRepository: asFunction(HealthInfoRepositoryInMemory).singleton()
-  })
-}
+//   container.register({
+//     HealthInfoRepository: asFunction(HealthInfoRepositoryInMemory).singleton()
+//   })
+// }
 
 const mongoDB = container => {
   const HealthInfoRepositoryMongo = require('../repositories/HealthInfoRepositoryMongo')

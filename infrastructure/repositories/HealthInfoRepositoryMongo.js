@@ -19,6 +19,7 @@ module.exports = ({ HealthInfo, HealthInfoSchema }) => ({
         try {
             await mongooseHealthInfo.save()
             return new HealthInfo(
+                mongooseHealthInfo.id,
                 mongooseHealthInfo.height,
                 mongooseHealthInfo.weight,
                 mongooseHealthInfo.age,
@@ -33,17 +34,59 @@ module.exports = ({ HealthInfo, HealthInfoSchema }) => ({
     },
 
     get: async id => {
-        const mongooseHealthInfo = await HealthInfoSchema.findById(id)
-        if (!mongooseHealthInfo) throw new NotFoundError('HealthInfo not found')
+        // const mongooseHealthInfo = await HealthInfoSchema.findById(id)
+        // if (!mongooseHealthInfo) throw new NotFoundError('HealthInfo not found')
 
-        return new HealthInfo(
-            mongooseHealthInfo.id,
-            mongooseHealthInfo.height,
-            mongooseHealthInfo.weight,
-            mongooseHealthInfo.age,
-            mongooseHealthInfo.gender,
-            mongooseHealthInfo.medic_his
-        )
+        // return new HealthInfo(
+        //     mongooseHealthInfo.id,
+        //     mongooseHealthInfo.height,
+        //     mongooseHealthInfo.weight,
+        //     mongooseHealthInfo.age,
+        //     mongooseHealthInfo.gender,
+        //     mongooseHealthInfo.medic_his
+        // )
+        try {
+            const mongooseHealthInfo = await HealthInfoSchema.findById(id)
+            return {
+                data: { mongooseHealthInfo },
+                errorCode: 0,
+                message: "Get user's health info",
+                success: true,
+            }
+        } catch (err) {
+            return {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                statusCode: 400,
+                data: {
+                    error: err.message,
+                },
+            };
+        }
+    },
+
+    //getByAge: async age => await HealthInfoSchema.find({ age: age }),
+    getByAge: async age => {
+        try {
+            const mongooseHealthInfo = await HealthInfoSchema.find({ age: age })
+            return {
+                data: { mongooseHealthInfo },
+                errorCode: 0,
+                message: "Get user's health info",
+                success: true,
+            }
+        } catch (err) {
+            return {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                statusCode: 400,
+                data: {
+                    error: err.message,
+                },
+            };
+        }
     },
 
     merge: async (id, data) => {

@@ -30,6 +30,14 @@ const HealthInfosController = (container) => ({
         return healthInfo
     },
 
+    findHealthInfoByAge: async(req, res) => {
+        const { GetHealthInfoByUserId}=container
+        
+        const healthInfo = await GetHealthInfoByUserId(req.params.age)
+        //res.code(200)
+        return healthInfo
+    },
+
     deleteHealthInfo: async (req,res)=>{
         const {DeleteHealthInfo}=container
 

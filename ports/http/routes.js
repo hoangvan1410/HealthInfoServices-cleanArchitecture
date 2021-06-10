@@ -15,6 +15,11 @@ module.exports = ({ HealthInfosController }) => [
     handler: HealthInfosController.findHealthInfo
   },
   {
+    method: 'GET',
+    path: '/healthInfos/age=:age',
+    handler: HealthInfosController.findHealthInfoByAge
+  },
+  {
     method: 'DELETE',
     path: '/healthInfos/:id',
     handler: HealthInfosController.deleteHealthInfo
